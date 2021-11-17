@@ -168,26 +168,64 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
   font-size: 18px;
 }
 
+
 @media only screen and (max-width: 768px)
  {
+
+  div.content {height: 100px;}
+
    
-.wrapper{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  width: 450px;
-   height: 380px; 
-  display: flex;
-  box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+
+.header03 {
+    width: 500px;
+    color: #fccf17;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 6px;
+    margin-top: 20px;
+    height: 80px;
+    background-color: rgb(0,0,0,0.4);
+    border: solid #ebebd9 1px;
+    box-shadow: 0 1px 1px 3px rgb(0 0 0);
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 242px;
+
 }
+
+
+.wrapper .right {
+    width: 58%;
+    background: #fff;
+    padding: 30px 5px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 6px;
+}
+
+.wrapper .left {
+    width: 30%;
+    background: #0D1E4F;
+    padding: 46px 30px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+    color: #fff;
+    margin-left: 60px;
+}
+
+
+
+
 }
   </style>
 
 
  
 <body  style="background-color: #ebebd9;">
-
+<div class="all">
 <div class="content">
   <div class="my_content">
   <div class="header03"><b>My Profile</b></div>
@@ -334,7 +372,7 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
       
       <form method="post">
         <div class="row">
-       <button type="button" class="btn btn-primary up" data-toggle="modal" data-target="#exampleModal">Update</button>
+       <button type="button" class="btn btn-primary up m" data-toggle="modal" data-target="#exampleModal">Update</button>
         <button type="button" class="btn btn-warning up" data-toggle="modal" data-target="#exampleModal1" style="margin-top: 10px;">Change Password</button>
         </form>
        </div>
