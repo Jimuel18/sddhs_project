@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- Custom Style -->
     <link rel="stylesheet" href="test.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <title>SDDHS</title>
 </head>
@@ -54,11 +57,12 @@
          $updatestatus = "UPDATE `schedule_tbl` SET status='Not_Available' WHERE schedule_id = '$schedule_id'";
          $update_stat = mysqli_query($conn, $updatestatus);
 
-         echo "<script type='text/javascript'>
+        echo '<script> 
           $(document).ready(function(){
-          $('#exampleModalCenter1').modal('show');
+          $("#succes1").modal("show");
           });
-          </script>";
+        </script>';
+
       }
 
 
@@ -198,34 +202,23 @@
             </footer>
         </div>
     </div>
-
-    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">APPOINTMENT SUBMITTED!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>Do you want to print a copy of your appointment?</h3>
-        <br>
-
-        <b>Note:</b> Screenshot copy will be accepted in the hospital
-      </div>
-      <form method="post">
-      <div class="modal-footer">
-         <a href="Patient_Dashboard.php" class="btn btn-secondary">NO</a>
-        <a href="Print.php?schedule_id=<?php echo $schedule_id?>&date=<?php echo $Date?>" class="btn btn-primary">YES</a>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
 
 <!-- Modal -->
+<div class="modal" id="succes1" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Appointment Booked!</h5>
+      </div>
+      <div class="modal-body">
+        <p><b> Note: Please Go to Hospital before the schedule that you book. See your Appointment to Print/Screenshot this copy and present it to your Doctor. </p>
+      </div>
+      <div class="modal-footer">
+        <a href="Appointment.php?id=<?php echo $_GET['id'] ?>&show=1" class="btn btn-default">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
 

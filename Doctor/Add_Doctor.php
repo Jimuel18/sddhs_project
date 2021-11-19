@@ -76,6 +76,45 @@ a.back {margin-left: 60px;}
 
 }
 
+
+
+ @media only screen and (max-width: 528px) {
+
+div.header5 {width: 290px; height: 80px; text-align: center; margin-left: 100px;}
+
+div.view {margin-left: 85px; margin-right: 35px; background-color: #fccf17; border-radius: 10px;}
+
+  div.add {margin-left: 85px; margin-right: 35px; background-color: #fccf17; border-radius: 10px;}
+
+[class*="col-"] {
+  width: 102%;
+  margin-top: 5px; 
+  margin-bottom: 50px;
+  margin-left: -45px;
+}
+
+a.back {margin-left: 45px;}
+
+ }
+
+ @media only screen and (max-width: 418px) {
+
+div.header5 {width: 290px; height: 80px; text-align: center; margin-left: 65px;}
+
+div.view {margin-left: 40px; margin-right: 0px; background-color: #fccf17; border-radius: 10px;}
+
+  div.add {margin-left: 40px; margin-right: 0px; background-color: #fccf17; border-radius: 10px;}
+
+  [class*="col-"] {
+  width: 102%;
+  margin-top: 5px; 
+  margin-bottom: 50px;
+  margin-left: -50px;
+}
+ }
+
+
+
 </style>
 
 <body style="background-color: #ebebd9;">

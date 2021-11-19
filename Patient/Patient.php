@@ -75,6 +75,19 @@ div.mytitle {width: 290px; height: 120px; text-align: center; margin-left: -20px
 
 }
 
+@media only screen and (max-width: 528px) {
+
+div.well { margin-left: 35px; margin-right: -50;}
+
+div.mytitle {width: 400px; height: 85px; text-align: center; margin-left: -60px;}
+
+}
+
+@media only screen and (max-width: 418px) {
+  div.mytitle {width: 330px; height: 85px; text-align: center; margin-left: -60px;}
+
+}
+
 </style>
  <?php 
       $query1="SELECT * FROM `patient_tbl` WHERE account_id != 0;";

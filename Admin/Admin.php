@@ -82,16 +82,95 @@
   @media only screen and (max-width: 768px) {
 
 [class*="col-"] {
-  width: 65%;
-  margin-left: 100px; 
-  margin-top: 10px;
-  margin-bottom: 10px;
+width: 65%;
+margin-left: 100px; 
+margin-top: 10px;
+margin-bottom: 10px;
 }
 
-div.map {margin-left: 19px; max-width: 400px;}
+div.map {
+margin-left: 32px;
+max-width: 400px;
+}
+div.chart{
+margin-left: 31px;
+}
 
 
-div.chart{margin-left: 15px;}
+
+@media only screen and (max-width: 528px) {
+div.fc * {
+  box-sizing: border-box;
+  margin-left: 0px;
+ }
+[class*="col-"] {
+width: 65%;
+margin-left: 110px; 
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+div.map {
+margin-left: 42px;
+max-width: 400px;
+}
+
+div.chart{
+margin-left: 18px;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.75em;
+    margin: 0;
+    text-align: center;
+}
+
+
+}
+
+
+@media only screen and (max-width: 418px) {
+
+[class*="col-"] {
+width: 65%;
+margin-left: 90px; 
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+div.map {
+margin-left: 14px;
+max-width: 400px;
+}
+
+div.chart{
+margin-left: 15px;
+}
+
+}
+
+@media only screen and (max-width: 419px) {
+  div.map {
+margin-left: 17px;
+max-width: 400px;
+}
+}
+
+@media only screen and (max-width: 529px) {
+  div.map {
+margin-left: 60px;
+max-width: 400px;
+}
+div.chart{
+margin-left: 15px;
+}
+[class*="col-"] {
+width: 65%;
+margin-left: 100px; 
+margin-top: 10px;
+margin-bottom: 10px;
+}
+}
 
 
   </style>  

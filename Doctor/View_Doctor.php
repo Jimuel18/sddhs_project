@@ -64,6 +64,7 @@
   
  } 
 
+
 .dataTables_filter {
    width: 50%;
    float: right;
@@ -72,7 +73,7 @@
 
 }
 
-table, thead, tr, th {
+table, tr, th {
   text-align: center;
 }
 
@@ -83,10 +84,12 @@ div.dataTables_length label {
 
 }
 
+
  @media only screen and (max-width: 768px) {
 
 
-div.well {overflow-x: auto; margin-left: -92px; max-width: 560px; }
+div.well {
+overflow-x: auto; margin-left: -92px; max-width: 560px; }
 
 div.header06 {width: 290px; height: 120px; text-align: center; margin-left: 150px;}
 
@@ -111,14 +114,68 @@ div.header06 {width: 290px; height: 120px; text-align: center; margin-left: 150p
   margin-left: 52px;
 }
 
-}
-
 a.back {margin-left: 50px;}
 }
 
 
+@media only screen and (max-width: 528px) {
+  div.header06{
+  width: 290px;
+  height: 120px;
+  text-align: center;
+  margin-left: 100px;
+}
+
+ div.view {
+  margin-left: 90px;
+  margin-right: 40px;
+  background-color: #fccf17;
+  border-radius: 10px;
+}
+
+  div.add {
+  margin-left: 90px;
+  margin-right: 40px;
+  background-color: #fccf17;
+  border-radius: 10px;
+ }
+
+ div.well {
+  overflow-x: auto;
+  margin-left: 20px;
+  max-width: 560px;
+}
+
+a.back {margin-left: 45px;}
+}
+
+@media only screen and (max-width: 418px) {
+ div.header06{
+  width: 290px;
+  height: 120px;
+  text-align: center;
+  margin-left: 70px;
+}
+
+ div.view {
+  margin-left: 40px;
+  margin-right: 0px;
+  background-color: #fccf17;
+  border-radius: 10px;
+}
+
+  div.add {
+  margin-left: 40px;
+  margin-right: 0px;
+  background-color: #fccf17;
+  border-radius: 10px;
+ }
+
+}
+
 </style>
 <body style="background-color: #ebebd9;">
+
 <div class="content">
   <div class="my_content">
 
@@ -136,7 +193,8 @@ a.back {margin-left: 50px;}
 </div>
 
   <!--Doctor Table-->
-        <div class="col-md-9" style="margin-left: 200px; margin-top: 50px;">
+
+        <div class="container-fluid">
 
     <!--Doctor Get_Info-->
           <?php 
@@ -146,12 +204,9 @@ a.back {margin-left: 50px;}
       $result=$stmt->get_result();
           ?>
 
-    
-
-  <div>
-
   <h2></h2>
   <p></p>
+
 
     <div class="well container-fluid">
   <table id="dtBasicExample" class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
@@ -197,7 +252,7 @@ a.back {margin-left: 50px;}
     </tbody>
   </table>
 </form>
-</div>
+
         </div>
     </div> 
     </div>

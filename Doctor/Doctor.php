@@ -191,15 +191,69 @@ else{
 
 @media only screen and (max-width: 768px) {
 
-.header5 {width: 290px; height: 120px; text-align: center; margin-left: 58px;}
+.header5{
+  width: 290px;
+  height: 120px;
+  text-align: center;
+  margin-left: 58px;
+}
 
- div.chart {max-width: 500px; margin-left: 15px;}
+ div.chart{
+  max-width: 500px;
+  margin-left: 15px;
+}
 
- div.view {margin-left: 35px; background-color: #fccf17; border-radius: 10px;}
+ div.view {
+  margin-left: 35px;
+  background-color: #fccf17;
+  border-radius: 10px;
+}
 
-  div.add {margin-left: 35px; background-color: #fccf17; border-radius: 10px;}
+  div.add {
+  margin-left: 35px;
+  background-color: #fccf17;
+  border-radius: 10px;
+ }
+
+}
 
 
+
+@media only screen and (max-width: 528px) {
+
+  .header5{
+  width: 290px;
+  height: 120px;
+  text-align: center;
+  margin-left: 100px;
+}
+
+ div.chart{
+  max-width: 500px;
+  margin-left: 15px;
+}
+
+ div.view {
+  margin-left: 35px;
+  background-color: #fccf17;
+  border-radius: 10px;
+}
+
+  div.add {
+  margin-left: 35px;
+  background-color: #fccf17;
+  border-radius: 10px;
+ }
+
+}
+
+@media only screen and (max-width: 418px) {
+ .header5{
+  width: 290px;
+  height: 120px;
+  text-align: center;
+  margin-left: 67px;
+}
 }
 
 </style>
