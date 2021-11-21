@@ -169,7 +169,7 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
 }
 
 
-@media only screen and (max-width: 768px)
+@media only screen and (max-width: 800px)
  {
 
   div.content {height: 100px;}
@@ -193,9 +193,7 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
     margin: auto;
     margin-top: 20px;
     margin-left: 242px;
-
 }
-
 
 .wrapper .right {
     width: 58%;
@@ -219,7 +217,7 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
 
 
 
-}
+
   </style>
 
 

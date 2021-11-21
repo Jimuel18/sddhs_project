@@ -19,19 +19,6 @@ if (isset($_POST['Add'])) {
 
 }
 
-
-  if (isset($_POST['update_sched'])) {
-   
-  $s_id = $_POST['sched_id'];
-
-  $Day_up = $_POST['day1'];
-  $Start_up = $_POST['start_time1'];
-  $End_up = $_POST['end_time1'];
-
-  $query_upt = "UPDATE `schedule_tbl` SET `day`='$Day_up',`start_time`='$Start_up',`end_time`='$End_up', status = 'Available' WHERE schedule_id = '$s_id'";
-  mysqli_query($conn, $query_upt);
- }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,7 +46,7 @@ if (isset($_POST['Add'])) {
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
 <script  src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -70,9 +57,19 @@ if (isset($_POST['Add'])) {
 
 <style>
 .container{
-  margin-right: 25%;
+  margin-right: 30%;
+  width: 78%;
 
 }
+
+.dataTables_filter {
+   width: 50%;
+   float: right;
+   text-align: left;
+   margin-right: -170px;
+
+}
+
 
 .table-wrapper {
   width: 130%;
@@ -86,7 +83,7 @@ if (isset($_POST['Add'])) {
   background: #0d2438;
   color: #fff;
   padding: 16px 30px;
-  margin: -20px -25px 10px;
+ 
   border-radius: 3px 3px 0 0;
     }
     .table-title h2 {
@@ -114,7 +111,7 @@ if (isset($_POST['Add'])) {
   margin-right: 5px;
  }
  .table-title .btn span {
-  float: left;
+  float: right;
   margin-top: 2px;
  }
     table.table tr th, table.table tr td {
@@ -168,44 +165,136 @@ if (isset($_POST['Add'])) {
   vertical-align: middle;
   margin-right: 10px;
  }
- .dataTables_filter {
+
+
+@media only screen and (max-width: 991px)
+ {
+    div.table-wrapper {margin-left: -20px; width: 147%;}
+    .butt { margin-right: 100px;}
+    h2 {text-align: center;}
+
+.dataTables_filter {
    width: 50%;
-   float: right;
    text-align: left;
-   margin-right: -130px;
+   margin-right: -160px;
+
+}
+.table-title h2 {
+     display: block; 
+    margin: -16px 0 0;
+    font-size: 25px;
+    position: relative;
+    margin-left: -120px;
+    margin-top: 5px;
+}
+.butt {
+    margin-right: -24px;
+}
+
+
+
+
+ @media only screen and (max-width: 1482px)
+ {
+.dataTables_filter {
+   width: 50%;
+   float: left;             
+   text-align: left;
+}
+
+ }
+
+
+
+ @media only screen and (max-width: 1859px)
+ {
+.dataTables_filter {
+   width: 50%;
+   float: left;
+  text-align: left;
+}
+
+ }
+
+
+ @media only screen and (max-width: 587px)
+ {
+
+.dataTables_filter {
+    width: 50%;
+    text-align: left;
+  float: left;  !important;
+}
 
 }
 
-div.dataTables_length label {
-  display: inline-block;
-  margin-bottom: 0.5rem;
 
+
+ @media only screen and (max-width: 319px)
+
+ {
+  div.table-wrapper {
+    margin-left: -33px;
+    width: 230%;
 }
+
+.table-title h2 {
+    display: block;
+    margin: -16px 0 0;
+    font-size: 25px;
+    position: relative;
+    margin-left: -21px;
+    margin-top: 5px;
+}
+
+.butt {
+    margin-right: 60px;
+}
+
+div.table-wrapper {
+    margin-left: -72px;
+    width: 230%;
+}
+
+ }
+
+
+
+ @media only screen and (max-width: 1365px){
+
+.dataTables_filter .col-md-6 {
+
+   float: left;
+  text-align: left;
+}
+
+
+ }
+
+
+
+
+
+
 
 </style>
 </head>
 
  <?php 
-      $query_sched="SELECT dt.firstname, dt.lastname, sd.schedule_id, sd.day, sd.start_time, sd.end_time, sd.status FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE sd.Doctor_id = '$_SESSION[doc_id]'";
+      $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE sd.Doctor_id = '$_SESSION[doc_id]'";
       $stmt_sched=$conn->prepare($query_sched);
       $stmt_sched->execute();
       $result_sched=$stmt_sched->get_result();
+      ?>
 
 
-
-
-
-?>
-
-
-<body style="background-color: #ebebd9;">
+<body>
 <div class="content">
   <div class="my_content">
 
 
 <div class="container">
   <div class="result">
-    
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row justify-content-center">
@@ -213,15 +302,18 @@ div.dataTables_length label {
              <h2>Doctor <b>Schedule</b></h2>
           </div>
 
-          <div class="container-fluid" >
+          <div class="col-sm-6 butt">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsched">
             <i class="fa fa-plus"></i> <span>Add New Schedule</span></button>
           </div>
         </div>
       </div>
 
-      <div >
-        <table class="table table-striped table-hover mx-auto w-auto" id="example" style="overflow-x: auto;">
+<div class="panel">
+
+  <div class="panel-body">
+  <div class="container" style="width:100%; ">
+     <table class="table table-striped table-hover " id="example" style="min-width: 100%; ">
           <thead>
             <th style="text-align: center;">Doctor</th>
             <th style="text-align: center;">Day</th>
@@ -231,6 +323,7 @@ div.dataTables_length label {
             <th style="text-align: center;">Action</th> 
             </th>
           </thead>
+
           <tbody>
             <?php 
               while ($row=$result_sched->fetch_assoc()) { ?>
@@ -258,60 +351,22 @@ div.dataTables_length label {
 
                  ?></td>
                 <td style="text-align: center;">
-                  <button class="btn btn-default view" type="submit" data-toggle="modal" data-target="#updateschedModal<?= $row['schedule_id']?>" style="color: black;"> Update <i class="fas fa-edit"></i></button>
-                     </td>
+                <button class="btn btn-default" data-toggle="modal" type="button" data-target="#updateschedModalCenter" style="color: black;"> Update <i class="fas fa-edit"></i></button>
+              </td>
               </tr>
-              <div class="modal fade" id="updateschedModal<?= $row['schedule_id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <form method="post">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle">Update Schedule</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" >
-         <div class="form-row text-center">
-    <div class="form-group col-md-11">
-      <label  style="color: black;"><b>Day</b></label>
-
-      <select type="Day" class="form-control text-center" id="inputPassword4" placeholder="Date" name="day1" style="width: 250px; margin:auto;">
-        <option value="Monday" <?php if($row['day'] == "Monday" ) { echo "Selected";}?>>Monday</option>
-        <option value="Tuesday" <?php if($row['day'] == "Tuesday" ) { echo "Selected";}?>>Tuesday</option>
-        <option value="Wednesday" <?php if($row['day'] == "Wednesday" ) { echo "Selected";}?>>Wednesday</option>
-        <option value="Thursday" <?php if($row['day'] == "Thursday" ) { echo "Selected";}?>>Thursday</option>
-        <option value="Friday" <?php if($row['day'] == "Friday" ) { echo "Selected";}?>>Friday</option>
-        <option value="Saturday" <?php if($row['day'] == "Saturday" ) { echo "Selected";}?>>Saturday</option>
-        <option value="Sunday" <?php if($row['day'] == "Sunday" ) { echo "Selected";}?>>Sunday</option>
-      </select>
-    </div>
-  </div>
-
-    <input type="hidden" name="sched_id" value="<?= $row['schedule_id']?>">
-
-      <div class="form-group">
-    <label for="inputAddress"  style="color: black; margin: auto;"><b>Start Time</b></label>
-    <input type="Time" class="form-control text-center" id="inputAddress" placeholder="Time" name="start_time1" value="<?= date('H:i', strtotime($row['start_time'])); ?>">
-  </div>
-
-  <div class="form-group">
-    <label for="inputAddress2"  style="color: black; margin: auto;"><b>End Time</b></label>
-    <input type="Time" class="form-control text-center" id="inputAddress2" placeholder="Consultation Time" name="end_time1" value="<?= date('H:i', strtotime($row['end_time'])); ?>">
-  </div> 
-        <div class="form-group">
-              <div class="modal-footer">
-              <button type="submit" name="update_sched" class="btn btn-success float-right" > Update</button>
-               <a href="Patient.php" class="btn btn-danger float-right" data-dismiss="modal">Cancel</a>
-              </div>   
-        </div>   
-      </form>
-    </div>
-      </div>
-      </div>
               <?php } ?>  
           </tbody>
         </table>
+
+
+
+</div>
+  </div>
+</div>
+
+
+      <div >
+       
       </div>
 
     </div>
@@ -328,7 +383,7 @@ div.dataTables_length label {
     <form method="post" style="width: 100%;">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle">ADD SCHEDULE</h4>
+        <h5 class="modal-title" id="exampleModalLongTitle">ADD SCHEDULE</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -352,7 +407,7 @@ div.dataTables_length label {
 
       <div class="form-group">
     <label for="inputAddress"  style="color: black; margin: auto;"><b>Start Time</b></label>
-    <input type="Time" class="form-control text-center" id="inputAddress" placeholder="Time" name="start_time" required="">
+    <input type="Time" class="form-control text-center" id="inputAddress" placeholder="Time" name="start_time">
   </div>
 
   <div class="form-group">
@@ -360,20 +415,68 @@ div.dataTables_length label {
     <input type="Time" class="form-control text-center" id="inputAddress2" placeholder="Consultation Time" name="end_time">
   </div>
  
-  <div class="modal-footer">
-     <button type="submit" onclick="return confirm('Do you want to add this Schedule?');" name="Add" class="btn btn-warning float-right" > ADD</button>
+              <button type="submit" name="Add" class="btn btn-warning btn-block" > ADD</button>
 
-     <a href="Patient.php" class="btn btn-danger float-right" data-dismiss="modal">Cancel</a>
-   </div>
+               <a href="Patient.php" class="btn btn-danger btn-block" data-dismiss="modal">Cancel</a>
 
 </form>
 </div>
       </div>
     </div>
   </div>
-</div>
 
 
+<div class="modal fade" id="updateschedModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <form action="Patient_action.php" method="post" enctype="multipart/form-data">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle" class="text-center text-info">Update Schedule</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+         <div class="form-row text-center">
+    <div class="form-group col-md-11">
+      <label  style="color: black;"><b>Day</b></label>
+      <select type="Day" class="form-control text-center" id="inputPassword4" placeholder="Date" name="day" style="width: 250px; margin:auto;">
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+      </select>
+    </div>
+  </div>
+
+      <div class="form-group">
+    <label for="inputAddress"  style="color: black; margin: auto;"><b>Start Time</b></label>
+    <input type="Time" class="form-control text-center" id="inputAddress" placeholder="Time" name="start_time">
+  </div>
+
+  <div class="form-group">
+    <label for="inputAddress2"  style="color: black; margin: auto;"><b>End Time</b></label>
+    <input type="Time" class="form-control text-center" id="inputAddress2" placeholder="Consultation Time" name="end_time">
+  </div>
+ 
+
+        
+        <div class="form-group">
+   
+              <button type="submit" name="update" class="btn btn-success btn-block" > Update</button>
+
+               <a href="Patient.php" class="btn btn-danger btn-block" data-dismiss="modal">Cancel</a>
+ 
+             
+        </div>   
+      </form>
+    </div>
+      </div>
+      </div>
 
 <script>
 function openForm() {
@@ -389,18 +492,27 @@ if ( window.history.replaceState ) {
     }
 
  $(document).ready( function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    "scrollX": true
+  });
 } );
 
- $('#example').dataTable( {
-    "oLanguage": {
-      "sLengthMenu": "Show Entries_MENU_",
-    }
-});
+// $(document).ready( function () {
+//   var table = $('#example').DataTable({
+//     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+//     "scrollX": true
+//   });
 
-     function showMessage() {
-       alert("Your Schedule has been Successfully Added!");
-     }
+// } );
+
+//  $('#example').dataTable( {
+//     "oLanguage": {
+//       "sLengthMenu": "Show Entries_MENU_",
+//       "scrollX": true
+
+//     }
+// });
 
 </script> 
 

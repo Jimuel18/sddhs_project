@@ -54,6 +54,26 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
 .carousel-inner > .item {
     margin: auto;
 }
+
+
+@media only screen and (max-width: 631px){
+.for_title, .my_content {
+    left: 0;
+    margin-top: 25px;
+    width: 100%;
+    margin: 17px;
+}
+
+
+@media only screen and (max-width: 484px){
+
+#check:checked ~ .content {
+    margin-left: -31px;
+    width: 550px;
+}
+}
+
+
   </style>
 
 <body style="background-color: #ebebd9">

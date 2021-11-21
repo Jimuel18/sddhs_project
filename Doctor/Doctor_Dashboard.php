@@ -71,8 +71,41 @@ table, th, td {
   margin: auto;
   margin-top: 20px;
 }
-  
+ 
+
+
+@media only screen and (max-width: 840px){
+.well {margin-left: -12px;overflow-x: auto;}
+.modal-body{overflow-x: auto;}
 }
+
+@media only screen and (max-width: 600px){
+.well {margin-left: 30px;overflow-x: auto;}
+b {display:none ;}
+.header2 {margin-left:47px;}
+.content{margin-left: 0px;}
+.modal-body{overflow-x: auto;}
+}
+
+@media only screen and (max-width: 536px){
+.header2{margin-left:45px;width: 450px;}
+.modal-body{overflow-x: auto;}
+}
+
+@media only screen and (max-width: 477px){
+.header2{width: 400px;}
+.modal-body{overflow-x: auto;}
+}
+
+@media only screen and (max-width: 427px){
+.header2{margin-left:35px;width: 350px;}
+  .modal-body{overflow-x: auto;}
+
+}
+
+
+
+
   </style>
 
 
@@ -81,7 +114,7 @@ table, th, td {
 
 <body style="background-color: #ebebd9;">
 
-  <div class="header2"><b>My Appointment</b></div>
+  <div class="header2">My Appointment</div>
 
 <?php
 
@@ -161,7 +194,7 @@ if (isset($_POST['view'])) {
               { 
               ?>
 
-               <a href="Doctor_Findings.php?id=<?= $row1['patient_id']?>&schedule_id=<?php echo $row1['schedule_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><i class="fas fa-file-export"></i> Edit </a>
+               <a href="Doctor_Findings.php?id=<?= $row1['patient_id']?>&schedule_id=<?php echo $row1['schedule_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><i class="fas fa-file-export"></i><b> Edit </b></a>
 
               <?php
                   
@@ -169,7 +202,7 @@ if (isset($_POST['view'])) {
               elseif($row1['Completed'] == "Pending"){
               ?>
 
-               <a href="Doctor_Findings.php?id=<?= $row1['patient_id']?>&schedule_id=<?php echo $row1['schedule_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><i class="fas fa-file-export"></i> Post Diagnosis </a>
+               <a href="Doctor_Findings.php?id=<?= $row1['patient_id']?>&schedule_id=<?php echo $row1['schedule_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><i class="fas fa-file-export"></i><b> Post Diagnosis </b></a>
 
               <?php
 
@@ -177,7 +210,7 @@ if (isset($_POST['view'])) {
               ?>
            <form method="post" style="display: inline-block;">
             <input type="hidden" name="view_id" value="<?= $row1['patient_id']?>">
-          <button type="submit" name="view" class="btn btn-warning"><i class="fas fa-eye"></i>View Record</button>
+          <button type="submit" name="view" class="btn btn-warning"><i class="fas fa-eye"></i><b>View Record</b></button>
           </form>
 
         </td>
@@ -268,6 +301,8 @@ function closeForm() {
    if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
+
+
 
 
 </script> 
