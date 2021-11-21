@@ -120,8 +120,8 @@
                             </table>
 
 
-                            <button  type="submit" class="btn btn-primary float-right" style="margin-left: 10px; margin-top: 10px;" name="book" class="fas fa-book-medical"></i> Print </button>
-                            <a  href="Patient_Diagnostics.php" class="btn btn-danger float-right" style="margin-top: 10px;"><i style="margin-top: 3px;" class="fas fa-door-open"></i> Exit </a>
+                            <button  type="submit" class="btn btn-primary float-right" id="printpagebutton" onclick="printpage()" style="margin-left: 10px; margin-top: 10px;" name="book" class="fas fa-book-medical"></i> Print </button>
+                            <a  href="Patient_Diagnostics.php" class="btn btn-danger float-right" id="exit" style="margin-top: 10px;"><i style="margin-top: 3px;" class="fas fa-door-open"></i> Exit </a>
 
 
                         </form>
@@ -195,5 +195,22 @@
 </body>
 </html>
 
-<!-- Modal -->
+<!-- Script -->
+<script>
+    function printpage() {
+        //Get the print button and put it into a variable
+        var printButton = document.getElementById("printpagebutton");
+        var exit = document.getElementById("exit");
+        var headhide = document.getElementById("headhide");
+        //Set the print button visibility to 'hidden' 
+        printButton.style.visibility = 'hidden';
+        exit.style.visibility = 'hidden';
+        headhide.style.visibility = 'hidden';
+        //Print the page content
+        window.print()
+        printButton.style.visibility = 'visible';
+        exit.style.visibility = 'visible';
+        headhide.style.visibility = 'visible';
+    }
+</script>
 

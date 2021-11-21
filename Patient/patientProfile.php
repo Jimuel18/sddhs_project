@@ -68,7 +68,6 @@ include('../Sidebar_Header_Test/Sidebar_Patient.php');
 
 /*Profile*/
 .wrapper{
-
   margin: auto;
   height: 500px; 
   width: 1000px;
@@ -172,15 +171,80 @@ include('../Sidebar_Header_Test/Sidebar_Patient.php');
  {
    
 .wrapper{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  margin-left: 32px;
+  max-width: 420px;
   width: 450px;
    height: 380px; 
   display: flex;
   box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
 }
+
+.btn {
+  margin-left: 43px;
+  width: 122%;
+}
+
+.wrapper .left img{
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 100px;
+  width: 100px;
+}
+
+.header03 {
+ width: 290px; 
+ height: 85px;
+ text-align: center;
+ margin-left: 93px;
+}
+
+button.save{
+  width: 15%;
+}
+
+button.ex{
+  width: 15%;
+}
+
+}
+
+@media only screen and (max-width: 418px) {
+  .wrapper{
+  margin-left: 12px;
+  max-width: 380px;
+  width: 450px;
+  height: 380px; 
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+}
+
+.btn {
+  margin-left: 43px;
+  width: 128%;
+}
+
+.wrapper .left img{
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 100px;
+  width: 100px;
+}
+
+.header03 {
+ width: 270px; 
+ height: 85px;
+ text-align: center;
+ margin-left: 65px;
+}
+
+button.save{
+  width: 25%;
+}
+
+button.ex{
+  width: 25%;
+}
+
 }
   </style>
 
@@ -358,13 +422,13 @@ include('../Sidebar_Header_Test/Sidebar_Patient.php');
     <form method="post">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Information</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" style="float: right;">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-            <h1 class="text-center text-info">Update Profile <?php echo $row_pat['patient_id'];?></h1>
+            <h1 class="text-center text-info">Update Profile</h1>
 
                 <input type="hidden" name="doc1_id" value="<?= $row_pat['patient_id'];?>"/>
 
@@ -383,8 +447,8 @@ include('../Sidebar_Header_Test/Sidebar_Patient.php');
                   <input type="text" name="Con1" class="form-control" value="<?= $row_pat['contactno']; ?>" required="">
                 </div>
                 <div class="modal-footer">
-                <button onclick="return confirm('Are you sure you want to Update this record?');" type="submit" name="update_info" class="btn btn-success float-right" > Save </button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button onclick="return confirm('Are you sure you want to Update this record?');" type="submit" name="update_info" class="btn btn-success float-right save" > Save </button>
+                <button type="button" class="btn btn-secondary ex" data-dismiss="modal">Close</button>
               </div>
       </div>
 
@@ -401,14 +465,14 @@ include('../Sidebar_Header_Test/Sidebar_Patient.php');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Security</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" style="float: right">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form method="post">
-        <h1 class="text-center text-info">CHANGE PASSWORD <?php echo $exe_pass['account_id']?></h1>
+        <h1 class="text-center text-info">CHANGE PASSWORD</h1>
 
                                               <?php if(isset($error)) { ?>
                                               <div class="alert alert-danger" role="alert">
@@ -433,8 +497,8 @@ include('../Sidebar_Header_Test/Sidebar_Patient.php');
         </div>
 
         <div class="modal-footer">
-        <button onclick="return confirm('Are you sure you want to Update this record?');" type="submit" name="update" class="btn btn-success float-right" > Save </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button onclick="return confirm('Are you sure you want to Update this record?');" type="submit" name="update" class="btn btn-success float-right save" > Save </button>
+        <button type="button" class="btn btn-secondary ex" data-dismiss="modal">Close</button>
       </div>
       </div>
 

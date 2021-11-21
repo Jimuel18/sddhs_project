@@ -70,6 +70,8 @@ include('../dbconnection/Login_conn.php');
   height: 500px;
   background-color: #0D1E4F;
   color: #ebebd9;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .card:hover {
@@ -111,16 +113,40 @@ div.doc_title {
 .card {
   height: 440px;
   width: 60%;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 h4, br {
   margin-top: -15px;
 }
-  div.doc_title {margin-left: 70px; width: 280px; height: 80px; margin-top: 30px; 
+  div.doc_title {margin-left: 100px; width: 280px; height: 80px; margin-top: 30px; 
 }
 .grid-item {
   margin-left: 100%;
 }
 
+
+}
+
+@media only screen and (max-width: 418px) {
+  /* For mobile phones: */
+.grid-container {
+  grid-template-columns: auto; margin-left:4%; margin-top: 50px; margin-right: -20px;
+}
+.card {
+  height: 440px;
+  width: 60%;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+h4, br {
+  margin-top: -15px;
+}
+  div.doc_title {margin-left: 65px; width: 280px; height: 80px; margin-top: 30px; 
+}
+.grid-item {
+  margin-left: 100%;
+}
 
 }
 </style>

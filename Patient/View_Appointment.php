@@ -58,7 +58,7 @@
 
 
 
-<body >
+<body>
     <div class="my-5 page" size="A4" id="printableArea">
         <div class="p-5">
             <section class="top-content bb d-flex justify-content-between">
@@ -123,8 +123,8 @@
                             </table>
 
 
-                            <button  class="btn btn-primary float-right" type="button" onclick="printDiv('printableArea')" style="margin-left: 10px; margin-top: 10px;" class="fas fa-book-medical"></i> Print </button>
-                            <a  href="My_Appointment.php?id=<?php echo $_GET['id'] ?>&show=1" class="btn btn-danger float-right" style="margin-top: 10px;"><i style="margin-top: 3px;" class="fas fa-door-open"></i> Exit </a>
+                            <button  class="btn btn-primary float-right" type="button" id="printpagebutton" onclick="printpage()" style="margin-left: 10px; margin-top: 10px;" class="fas fa-book-medical"></i> Print </button>
+                            <a  href="My_Appointment.php?id=<?php echo $_GET['id'] ?>&show=1" id="exit" class="btn btn-danger float-right" style="margin-top: 10px;"><i style="margin-top: 3px;" class="fas fa-door-open"></i> Exit </a>
 
 
                         </form>
@@ -138,13 +138,8 @@
                 <br>
                 <div class="row">
                     <div class="col-8">
-                        <p class="m-0 font-weight-bold"> Note: </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="m-0 font-weight-bold"></p>
+                        <p></p>
                     </div>
                     <div class="col-4">
                         <table class="table border-0 table-hover">
@@ -154,14 +149,14 @@
                         <!-- Signature -->
                         <div class="col-12">
                             <img src="signature.png" class="img-fluid" alt="">
-                            <p class="text-center m-0"> Doctor Signature </p>
+                            <p class="text-center m-0 float-right"> Doctor Signature </p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Cart BG -->
-            <img src="cart.jpg" class="img-fluid cart-bg" alt="">
+            <img src="../Pics/asdf.png" class="img-fluid cart-bg" alt="">
 
             <footer>
                 <hr>
@@ -201,16 +196,34 @@
 </body>
 </html>
 
-<!-- Script -->
 <script>
-    function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
+    function printpage() {
+        //Get the print button and put it into a variable
+        var printButton = document.getElementById("printpagebutton");
+        var exit = document.getElementById("exit");
+        var headhide = document.getElementById("headhide");
+        //Set the print button visibility to 'hidden' 
+        printButton.style.visibility = 'hidden';
+        exit.style.visibility = 'hidden';
+        headhide.style.visibility = 'hidden';
+        //Print the page content
+        window.print()
+        printButton.style.visibility = 'visible';
+        exit.style.visibility = 'visible';
+        headhide.style.visibility = 'visible';
+    }
 </script>
+
+
+<!-- <script>
+     function printDiv() {
+            var divContents = document.getElementById("printableArea").innerHTML;
+            var a = window.open('', '', 'height=100%, width=100%');
+            a.document.write('<html>');
+            a.document.write('<body > <h1>Div contents are <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        }
+</script> -->

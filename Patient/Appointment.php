@@ -35,7 +35,7 @@
 margin-top: -5px;
   width: 800px;
   background-color: rgb(0,0,0,0.5);
-  margin-left: 20%;
+  margin: auto;
   color: #0D1E4F;
   padding: 7px;
   text-align: center;
@@ -52,40 +52,41 @@ color: white;
 background-color: black;
 border-radius: 50px;
     }
+div.foot{
+    width: 500px;
+    margin: auto;
+}
 
 
+.content{
+    margin-left: 0px;
+}
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
 
+div.foot {margin-left: 145px; margin-right: 30px; margin-bottom: 20%; width: 300px;}
 
-h2 {margin-left: -135%; }
-div.foot {margin-left: 100px;margin-right: 30px; margin-bottom: 20%;}
-header {float: none; display: none; text-align: left;}
-.header-appointment {margin-left: -18px; width: 400px;}
-body {background-size: auto; height: auto;}
-
-.nav {padding-left: 183px;}
-
-div.date{margin-left: 160px; margin-right: -20px;};
-
-table.table tbody tr th {
-    width: 100px;
-}
-
-a.backk {margin-left: 100%;}
+.header-appointment {margin-left: 14px; width: 400px;}
 
 }
 
+@media only screen and (max-width: 418px) {
+    .content{
+    margin-left: -22px;
+    }
 
+    .nav {padding-left: 50px;}
+    .header-appointment {margin-left: 13px; width: 400px;}
+    div.date{margin-left: 50px;}
+    div.foot {margin-left: 138px; margin-right: 30px; margin-bottom: 20%; width: 250px;}
+
+}
 
   </style>
 <?php 
 $doctorid = $_GET['id'];
 $show = $_GET['show'];
-
-
-
 
 if($show == 1){
       $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Sunday' ORDER BY sd.start_time";
@@ -160,14 +161,14 @@ elseif ($show == 7){
     <div class="my_content">
 
 
-<a href="Patient_Dashboard.php" class="btn btn backk" style="margin-left: -180px; margin-top: 10px;"><i class="fas fa-angle-double-left" style="font-size: 50px; color: #0D1E4F;"></i></a>
+<a href="Patient_Dashboard.php" class="btn btn backk" style="margin-top: 10px;"><i class="fas fa-angle-double-left" style="font-size: 50px; color: #0D1E4F;"></i></a>
 
 <div class="header-appointment">  <i class="fas fa-th-list"></i> <b>Appointment Booking </b></div>
 
 <body style="background-color: #ebebd9;">
 
 
-   <ul class="nav nav-tabs justify-content-center" style="margin-top: 10px; margin-left: -200px;">
+   <ul class="nav nav-tabs justify-content-center" style="margin-top: 10px;">
 
     <li><a href="Appointment.php?id=<?php echo $doctorid ?>&show=1">Sunday</a></li>
     <li><a href="Appointment.php?id=<?php echo $doctorid ?>&show=2">Monday</a></li>
@@ -182,7 +183,7 @@ elseif ($show == 7){
 
 <div class="date">
 <?php
-echo "<h4 style='text-align: center; color: white; padding: 10px; width: 100%;  background-color: rgb(0,0,0,0.5); margin-left: -100px;'>| <i class='fas fa-calendar-week'></i> ".date_format (new DateTime($Date), 'F d, Y')."  |</h4>";
+echo "<h4 style='text-align: center; color: white; padding: 10px; width: 100%;  background-color: rgb(0,0,0,0.5); margin: auto; margin-top: 10px;'>| <i class='fas fa-calendar-week'></i> ".date_format (new DateTime($Date), 'F d, Y')."  |</h4>";
 
 date_default_timezone_set("Asia/Manila");
 $time = date("h:i A"); 
@@ -192,15 +193,13 @@ $time = date("h:i A");
 
   <h2></h2>
   <p></p>
-  
 <div class="container-fluid" >
   <div class="row content">
     
     <br>
-    
-    <div class="col-sm-12" >
-      <div class="table">
-    <table class="table table-striped" style="padding: 100%; margin-left: -50px; border: solid black 3px; border-radius: 5px;">
+
+      <div class="table justify-content-center">
+    <table class="table table-striped" style="border: solid black 2px; border-radius: 5px; margin: auto;">
   <tr>
     
     <th style="width: 250px;" scope="col">|Doctor<i class="fas fa-user-md"></i>|</th>
@@ -221,23 +220,15 @@ $time = date("h:i A");
            <?php
 
        }
-
        else{
-
-
-    while ($row=$result_sched->fetch_assoc()) { ?>
-      <tr>
-        <td scope="row"><?= $row['firstname'].' '.$row['lastname'];?></td>
-      <td scope="row"><?= $row['day']; ?></td>
-       <td scope="row"><?= date('h:i A', strtotime($row['start_time'])); ?></td>
-      <td scope="row"><?= date('h:i A', strtotime($row['end_time'])); ?></td>
-
-      
-    <td>
+            while ($row=$result_sched->fetch_assoc()) { ?>
+              <tr>
+                <td scope="row"><?= $row['firstname'].' '.$row['lastname'];?></td>
+              <td scope="row"><?= $row['day']; ?></td>
+               <td scope="row"><?= date('h:i A', strtotime($row['start_time'])); ?></td>
+              <td scope="row"><?= date('h:i A', strtotime($row['end_time'])); ?></td>
+              <td>
     <?php
-
-
-
             $today = date("Y-m-d");
             $time = ltrim(date("H:i:s"), 0);
             $sched = ltrim($row['start_time'], 0);
@@ -317,9 +308,7 @@ $time = date("h:i A");
 </div>
     </div>
   </div>
-
   </div>
-
   <div class="foot">
   <h5 style="font-style: italic; color: white; margin-top: 30px; background-color: rgb(0,0,0,0.5); padding: 10px; border-radius: 10px; position: relative; margin-left: -100px;">Note: Schedules will reset after a week! Make sure that you book an appointment "The day before the doctor's schedule". Thankyou! </h5>
   

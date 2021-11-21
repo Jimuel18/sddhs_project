@@ -122,11 +122,11 @@ table, thead, tr, th {
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
 
-div.container { max-width: 470px;}
+div.container { max-width: 600px;}
 
-div.well{ margin-left: 55px;}
+div.well{ margin-left: 55px; max-width: 500px;}
 
-.butche {width: 40px; height: 40px; }
+.butche {width: 40px; height: 35px; margin-bottom: 5px;}
 b {
   display: none;
 }
@@ -135,6 +135,23 @@ h2 {margin-top: 50px; margin-left: 80px;}
 
 div.header00 {margin-left: 100px; width: 280px; height: 120px; margin-top: 30px; }
 
+}
+
+@media only screen and (max-width: 418px) {
+  div.container { max-width: 600px;}
+
+div.well{ margin-left: 35px; max-width: 500px;}
+
+.butche {width: 40px; height: 35px; margin-bottom: 5px;}
+b {
+  display: none;
+}
+
+h2 {margin-top: 50px; margin-left: 80px;}
+
+div.header00 {margin-left: 65px; width: 280px; height: 120px; margin-top: 30px; }
+
+}
 }
 
 </style>
@@ -176,9 +193,12 @@ div.header00 {margin-left: 100px; width: 280px; height: 120px; margin-top: 30px;
         <td>
           <form method="post" class="row-4">
           <input type="hidden" name="app" value="<?= $row['appointment_id'].'|'.$row['schedule_id']?>">
+        
           <a href="View_Appointment.php?id=<?php echo $row['appointment_id']; ?>" type="submit" class="btn btn-success butche" name="view_app"> <i class="far fa-eye"></i> <b>View</b>  </a>
-          <button onclick="return confirm('Are you sure you want to Cancel your Appointment?');"  type="submit" name="cancel_app" class="btn btn-danger butche" > <i class="far fa-window-close"></i> <b>Cancel</b> </button>
 
+           <?php if($row['Completed'] == "Pending") { ?>
+          <button onclick="return confirm('Are you sure you want to Cancel your Appointment?');"  type="submit" name="cancel_app" class="btn btn-danger butche" > <i class="far fa-window-close"></i> <b>Cancel</b> </button>
+        <?php }?>
           </form>
       
       </tr>     

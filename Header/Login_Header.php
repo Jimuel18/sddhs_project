@@ -30,7 +30,7 @@ i.logo {margin-right: -135px;}
  
 }
 </style>
-    <div>
+    <div id="headhide">
     <header class="header" style="top: 0; left: 0; width: 100%; height: 53px; background:#0D1E4F; display: flex; border: 2px solid; z-index: 1;">  
 
 <div class="left_area">

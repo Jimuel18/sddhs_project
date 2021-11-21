@@ -337,6 +337,7 @@ display: none;
 
 #check:checked ~ .content {
   margin-left: -15px;
+  z-index: 2;
 }
 
 }

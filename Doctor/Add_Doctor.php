@@ -183,11 +183,7 @@ if (isset($_SESSION['response'])) { ?>
         </div>
 
         <div class="form-group">
-          <input type="text" name="user" class="form-control" value="<?= $username; ?>" placeholder="Enter Username" required="">
-        </div>
-
-        <div class="form-group">
-          <input type="password" name="password" class="form-control" value="<?= $password; ?>" placeholder="Enter Password" required="">
+          <input type="text" name="eml" class="form-control" value="<?= $email; ?>" placeholder="Enter Email" required="">
         </div>
 
         <input type="hidden" name="doctor_id" value="<?= $result1['doctor_id']; ?>">

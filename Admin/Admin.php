@@ -78,25 +78,59 @@
 </head>
 <style>
 
+[class*="col-"] {
+position: relative;
+margin-top: 10px;
+margin-bottom: 60px;
+}
 
-  @media only screen and (max-width: 768px) {
+.chart{
+float: right;
+margin-left: 15px;
+width: 800px;
+margin-top: 130px;
+}
+
+.map {
+float: right;
+width: 800px;
+height: 300px;
+}
+
+@media only screen and (max-width: 768px ) { 
+div.map {
+margin-top: 20px;
+margin-left: 130px;
+max-width: 500px;
+}
+div.chart{
+margin-left: 200px;
+width: 550px;
+}
+
+canvas{
+  margin-left: 125px;
+}
+
 
 [class*="col-"] {
 width: 65%;
-margin-left: 100px; 
+margin-left: 180px; 
 margin-top: 10px;
 margin-bottom: 10px;
 }
 
-div.map {
-margin-left: 32px;
-max-width: 400px;
+.fc .fc-toolbar-title {
+    font-size: 1.75em;
+    margin-left: 0;
+    text-align: center;
 }
-div.chart{
-margin-left: 31px;
+div.fc * {
+  box-sizing: border-box;
+  margin-left: 2px;
+ }
+
 }
-
-
 
 @media only screen and (max-width: 528px) {
 div.fc * {
@@ -115,8 +149,12 @@ margin-left: 42px;
 max-width: 400px;
 }
 
+canvas{
+  margin-left: 105px;
+}
+
 div.chart{
-margin-left: 18px;
+margin-left: 10px;
 }
 
 .fc .fc-toolbar-title {
@@ -128,6 +166,25 @@ margin-left: 18px;
 
 }
 
+@media only screen and (max-width: 529px) {
+
+div.map {
+float: left;
+margin-left: 61px;
+max-width: 400px;
+z-index: 1;
+}
+div.chart{
+margin-left: 15px;
+}
+[class*="col-"] {
+width: 65%;
+margin-left: 100px; 
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+}
 
 @media only screen and (max-width: 418px) {
 
@@ -139,43 +196,25 @@ margin-bottom: 10px;
 }
 
 div.map {
-margin-left: 14px;
+margin-left: 4px;
 max-width: 400px;
+}
+
+canvas{
+  margin-left: 185px;
 }
 
 div.chart{
-margin-left: 15px;
+margin-left: 50px;
 }
 
-}
 
-@media only screen and (max-width: 419px) {
-  div.map {
-margin-left: 17px;
-max-width: 400px;
 }
-}
-
-@media only screen and (max-width: 529px) {
-  div.map {
-margin-left: 60px;
-max-width: 400px;
-}
-div.chart{
-margin-left: 15px;
-}
-[class*="col-"] {
-width: 65%;
-margin-left: 100px; 
-margin-top: 10px;
-margin-bottom: 10px;
-}
-}
-
 
   </style>  
 
 <body style="background-color: #ebebd9;">
+
   <div class="content">
     <div class="my_content">
 
@@ -184,19 +223,22 @@ margin-bottom: 10px;
 
   <div class="clearfix"></div>
   <br/>
-  
-  <div class="col-div-3">
+  <a href="../Patient/Patient.php">
+  <div class="col-div-3 ">
     <div class="box">
       <p><?= $row_pat ?><br/><span>Patients</span></p>
       <i class="fas fa-heartbeat box-icon"></i>
     </div>
   </div>
+  </a>
+  <a href="../Doctor/View_Doctor.php">
   <div class="col-div-3">
     <div class="box">
       <p> <?= $row ?> <br/><span>Doctors</span></p>
       <i class="fas fa-user-md box-icon"></i>
     </div>
   </div>
+  </a>
   <div class="col-div-3">
     <div class="box">
       <p> <?= $row_ad ?><br/><span>Booked</span></p>
@@ -204,14 +246,13 @@ margin-bottom: 10px;
     </div>
   </div>
  
- <div class="chart container" style="max-width: 800px; margin-top: 200px; margin-bottom: 50px; ">
- <canvas id="myChart"></canvas>
- </div>
-
-
- <div class="container map">
+ <div class="container-fluid map">
   <?php include('google-calendar.php')?>
 </div>
+
+ <div class="chart container-fluid">
+ <canvas id="myChart"></canvas>
+ </div>
 
 <script>
   
@@ -222,7 +263,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: <?php echo $xres; ?>,
         datasets: [{
-            label: 'Number of Patient Appointed YEARLY',
+            label: 'Patient Appointed',
             data: <?php echo $yres; ?>,
             backgroundColor: <?php echo $col; ?>,
             borderColor: [

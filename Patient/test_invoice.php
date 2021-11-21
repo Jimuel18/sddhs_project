@@ -76,7 +76,7 @@
                     <img src="../Pics/241359692_549745289476479_98065932882723701_n.png" alt="" class="img-fluid">
                 </div>
                 <div class="top-left">
-                    <div class="graphic-path" >
+                    <div class="graphic-path">
                         <p><b>SDDHS</b></p>
                     </div>
                     <div class="position-relative">

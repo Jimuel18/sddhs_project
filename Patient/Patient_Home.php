@@ -64,22 +64,41 @@ $result_count_2 = mysqli_fetch_assoc($exe_count_2);
     max-width: 100%;
     height: 590px;
   }
-
-
- [class*="col-"] {
+[class*="col-"] {
   width: 65%;
   margin-left: 105px; 
   margin-top: 10px;
   margin-bottom: 10px;
-  float: left;
 }
-
 h1{
   margin-left: 60px;
 }
 
-
 div.slide {margin-left: 5%;}
+}
+
+@media only screen and (max-width: 418px) {
+
+[class*="col-"] {
+width: 80%;
+margin-left: 60px; 
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.carousel-inner>.item>img {
+    display: block;
+    max-width: 110%;
+    height: 590px;
+}
+
+div.slide {
+  margin-left: 2%;
+}
+
+h1{
+  margin-left: 30px;
+}
 
 }
 </style>
@@ -97,9 +116,9 @@ div.slide {margin-left: 5%;}
     <div class="clearfix"></div>
     <br/>
     <div class="col-div-3">
-        <div class="box">
+        <div class="box app">
             <p><?= $result_count['App'] ?><br/><span>My Appointment</span></p>
-            <i class="fa fa-users box-icon"></i>
+            <i class="fas fa-user box-icon"></i>
         </div>
     </div>
     <div class="col-div-3">

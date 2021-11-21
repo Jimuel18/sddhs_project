@@ -40,7 +40,7 @@
      
 
       <li>
-      <a onclick="return confirm('Are you sure you want to Update this record?');" href="../dbconnection/Logout_admin.php">
+      <a onclick="return confirm('Continue Logout this account?');" href="../dbconnection/Logout_admin.php">
       <span class="icon"><i class='bx bx-log-out-circle' ></i></span>
       <span class="title">Logout</span>
       </a>

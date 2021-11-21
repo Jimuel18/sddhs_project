@@ -3,7 +3,7 @@
   include('../Header/Login_Header.php');
   include ('../dbconnection/Login_conn.php');
 
-      if(isset($_POST['Submit-Patient'])){
+if(isset($_POST['Submit-Patient'])){
   
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];

@@ -5,13 +5,30 @@
 
 	$check = $_GET['uname'];
 
+	$que = "SELECT usertype_id FROM accounts_tbl WHERE username = '$check'";
+	$que1 = mysqli_query($conn, $que);
+	$que2 =mysqli_fetch_assoc($que1);
 
-	$result_check = "SELECT pat.patient_id, pat.email, pat.account_id, acc.username FROM patient_tbl pat INNER JOIN accounts_tbl acc ON pat.account_id = acc.account_id WHERE acc.username = '$check'";
-	$exe_check = mysqli_query($conn, $result_check);
-	$res = mysqli_fetch_assoc($exe_check);
+	$u_type = $que2['usertype_id'];
 
-	$email = $res['email'];
-		list($first, $last) = explode("@", $email);
+	if ($u_type == 2)
+	{
+		$result_check = "SELECT doc.email FROM doctor_tbl doc INNER JOIN accounts_tbl acc ON doc.account_id = acc.account_id WHERE acc.username = '$check'";
+		$exe_check = mysqli_query($conn, $result_check);
+		$res = mysqli_fetch_assoc($exe_check);
+
+		$email = $res['email'];
+	}
+	elseif($u_type == 3)
+	{
+		$result_check = "SELECT pat.email FROM patient_tbl pat INNER JOIN accounts_tbl acc ON pat.account_id = acc.account_id WHERE acc.username = '$check'";
+		$exe_check = mysqli_query($conn, $result_check);
+		$res = mysqli_fetch_assoc($exe_check);
+
+		$email = $res['email'];
+	}
+
+	list($first, $last) = explode("@", $email);
    	$len = floor(strlen($first)/2);
     $the_email = substr($first, 0, $len) . str_repeat('*', $len) . "@" . $last;
 
@@ -22,7 +39,7 @@
 
     	   if ($email == $check_email) {
 
-    	  $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    	 $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $password = substr( str_shuffle( $chars ), 0, 8 );
 
         require_once "../PHPMailer/PHPMailer.php";

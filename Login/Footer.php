@@ -416,3 +416,50 @@ $(function () {
   </div>
 </div>
 
+if(isset($_POST['addDoctor'])){
+
+
+$Firstname=$_POST['fname'];
+$Lastname=$_POST['lname'];
+$Middlename=$_POST['mname'];
+$HouseNo=$_POST['Hnumber'];
+$Barangay=$_POST['Bgay'];
+$Municipality=$_POST['Municipality'];
+$Province=$_POST['prov'];
+$ContactNo=$_POST['phonenum'];
+$Specialization=$_POST['Special'];
+$email = $_POST['eml'];
+$username = $_POST['user'];
+$pass = $_POST['password'];
+$password = md5($pass);
+
+
+
+
+         $query_1 = "INSERT INTO accounts_tbl (`username`, `password`, `usertype_id`) VALUES ('$username','$password', '2')";
+         mysqli_query($conn,$query_1);
+
+         $query_2 = "SELECT MAX(account_id) AS ID FROM accounts_tbl";
+         $exe_2 = mysqli_query($conn,$query_2);
+         $result_2 = mysqli_fetch_assoc($exe_2);
+
+         $id = $result_2['ID'];
+
+    $insert_pat = "INSERT INTO doctor_tbl (firstname,lastname,middlename,houseno,barangay,municipality,province,contactNo,email,Specialization_id,account_id)
+      VALUES('$Lastname','$Firstname','$Middlename','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$email','$Specialization','$id')";
+        $run_insert_pat = mysqli_query($conn,$insert_pat);
+
+
+
+  if($run_insert_pat === true){
+  $message = "All data has been inserted!";
+
+  echo "<script type='text/javascript'>alert('$message');</script>";
+
+}
+else{
+  echo"Try Again";
+}
+
+
+}  

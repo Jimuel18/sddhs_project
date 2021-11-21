@@ -1,5 +1,6 @@
 <?php
 include('../dbconnection/Login_conn.php');
+ use PHPMailer\PHPMailer\PHPMailer;
 
 $update=false;
 //Doctor
@@ -14,6 +15,7 @@ $Province="";
 $Schedule="";
 $ContactNo="";
 $username="";
+$email = "";
 
 //Findings
 $record_id="";
@@ -29,7 +31,7 @@ $Findings="";
 
 
 
-	if(isset($_POST['addDoctor'])){
+if(isset($_POST['addDoctor'])){
 
 
 $Firstname=$_POST['fname'];
@@ -41,40 +43,67 @@ $Municipality=$_POST['Municipality'];
 $Province=$_POST['prov'];
 $ContactNo=$_POST['phonenum'];
 $Specialization=$_POST['Special'];
-$username = $_POST['user'];
-$pass = $_POST['password'];
-$password = md5($pass);
+$email = $_POST['eml'];
+
+				$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $password = substr( str_shuffle( $chars ), 0, 8 );
+        $username = substr( str_shuffle( $chars ), 0, 8 );
+
+        require_once "../PHPMailer/PHPMailer.php";
+        require_once "../PHPMailer/SMTP.php";
+        require_once "../PHPMailer/Exception.php";
+
+        $mail = new PHPMailer();
+
+        //smtp settings
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "stodomingodistricthospital@gmail.com";
+        $mail->Password = 'Capstone0101';
+        $mail->Port = 465;
+        $mail->SMTPSecure = "ssl";
+
+        //email settings
+        $mail->isHTML(true);
+        $mail->setFrom("stodomingodistricthospital@gmail.com", "S.D.D.H.S");
+        $mail->addAddress($email);
+        $mail->Subject = ("StoDomingo District Hospital");
+        $mail->Body = "<h1>S.D.D.H.S E-Medic</h1></br><h5>Hey this is your login information.</h5></br> <b>username: $username </br>password: $password </b>";
+
+            if($mail->send()){
+
+                     $hash_pass = md5($password);
+
+                     $query_1 = "INSERT INTO accounts_tbl (`username`, `password`, `usertype_id`) VALUES ('$username','$hash_pass', '2')";
+         						 mysqli_query($conn,$query_1);
+
+                     $query_2 = "SELECT MAX(account_id) AS ID FROM accounts_tbl";
+                     $exe_2 = mysqli_query($conn,$query_2);
+                     $result_2 = mysqli_fetch_assoc($exe_2);
+
+                     $id = $result_2['ID'];
+
+                     $insert_pat = "INSERT INTO doctor_tbl (firstname,lastname,middlename,houseno,barangay,municipality,province,contactNo,email,Specialization_id,account_id)
+	    							 VALUES('$Lastname','$Firstname','$Middlename','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$email','$Specialization','$id')";
+  	    						 $run_insert_pat = mysqli_query($conn,$insert_pat);
+
+                     $status = "success";
+                     $response = "Email is sent!";
+             }
+             else
+             {
+                  $status = "failed";
+                  $response = "Something is wrong: <br>" . $mail->ErrorInfo;
+             }
+
+        exit(json_encode(array("status" => $status, "response" => $response)));
+    
+    }
 
 
 
-
-         $query_1 = "INSERT INTO accounts_tbl (`username`, `password`, `usertype_id`) VALUES ('$username','$password', '2')";
-         mysqli_query($conn,$query_1);
-
-         $query_2 = "SELECT MAX(account_id) AS ID FROM accounts_tbl";
-         $exe_2 = mysqli_query($conn,$query_2);
-         $result_2 = mysqli_fetch_assoc($exe_2);
-
-         $id = $result_2['ID'];
-
-		$insert_pat = "INSERT INTO doctor_tbl (firstname,lastname,middlename,houseno,barangay,municipality,province,contactNo,Specialization_id,account_id)
-	    VALUES('$Lastname','$Firstname','$Middlename','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$Specialization','$id')";
-  	    $run_insert_pat = mysqli_query($conn,$insert_pat);
-
-
-
-  if($run_insert_pat === true){
-  $message = "All data has been inserted!";
-
-  echo "<script type='text/javascript'>alert('$message');</script>";
-
-}
-else{
-  echo"Try Again";
-}
-
-
-}  
+     
 
 	
 			if (isset($_GET['delete'])) {

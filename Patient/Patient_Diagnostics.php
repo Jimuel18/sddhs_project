@@ -58,15 +58,36 @@
   margin: auto;
   margin-top: 20px;
 }
+
 table, thead, tr, th {
   text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
 
-.well { margin-left: -70px; overflow-x: auto; max-width: 300px;}
-div.header01 {margin-left: 100px; width: 280px; height: 100px; margin-top: 30px; }
+.well { margin-left: 35px; overflow-x: auto; max-width: 800px;}
+
+
+div.header01 {margin-left: 100px; width: 280px; height: 80px; margin-top: 30px; }
+
+b {
+  display: none;
+}
   }
+
+  @media only screen and (max-width: 418px) {
+    .well { margin-left: 35px; overflow-x: auto; max-width: 800px;}
+
+
+div.header01 {margin-left: 65px; width: 280px; height: 80px; margin-top: 30px; }
+
+b {
+  display: none;
+}
+  }
+
+
+
 </style>
 
 
@@ -86,7 +107,7 @@ div.header01 {margin-left: 100px; width: 280px; height: 100px; margin-top: 30px;
 
   <div class="content">
     <div class="my_content">
-              <div class="header01"><b>DIAGNOSIS</b></div>
+              <div class="header01">DIAGNOSIS</div>
 
  <div class="container-fluid" style="margin: auto; margin-top: 50px;">
       <div class="well" >
@@ -113,7 +134,7 @@ div.header01 {margin-left: 100px; width: 280px; height: 100px; margin-top: 30px;
          <td><?= $row['weight']; ?></td>
         <td>
     
-          <a href="View_Diagnosis.php?rec_id=<?php echo $row['record_id']?>" class="btn btn-success" name="View" > <i class="fas fa-eye"></i> View</a>
+          <a href="View_Diagnosis.php?rec_id=<?php echo $row['record_id']?>" class="btn btn-success" name="View" > <i class="fas fa-eye"></i> <b>View<b></a>
 
          
         </td>
