@@ -67,11 +67,11 @@ include('../dbconnection/Login_conn.php');
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   width: 45%;
-  height: 500px;
+  height: 550px;
   background-color: #0D1E4F;
   color: #ebebd9;
   margin-top: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .card:hover {

@@ -244,7 +244,7 @@ a.back {margin-left: 45px;}
         <td>
           <a>
            
-          <a href="../Doctor/Add_Doctor.php?edit=<?= $row['Doctor_id']; ?>" class="badge-success btn-sm p-2" >Update</a>
+          <a href="../Doctor/Add_Doctor.php?edit=<?= $row['Doctor_id']; ?>" class="badge-success btn-sm p-2" >Update <i class="fas fa-edit"></i></a>
             
         </td>
       </tr>  

@@ -10,17 +10,68 @@
 	 $exe_forgot = mysqli_query($conn, $forgot);
 	 $result = mysqli_fetch_assoc($exe_forgot);
 
-	 $cur_username = $result['username'];
+	 $u_id = $result['usertype_id'];
 
-
-	 if ($cur_username == $user_name) {
-	 		 header('location: Success.php?uname='.$cur_username.'');	
-	 }
-	 else{
-	 	$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
+	 if ($u_id == 1) {
+	 		$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
 	 }
 
+	 elseif ($u_id == 2)
+	{
+		$result_check = "SELECT doc.email, acc.username FROM doctor_tbl doc INNER JOIN accounts_tbl acc ON doc.account_id = acc.account_id WHERE acc.username = '$user_name'";
+		$exe_check = mysqli_query($conn, $result_check);
+		$res = mysqli_fetch_assoc($exe_check);
+
+		$uname = $res['username'];
+
+		echo  '<script> window.location.href="Success.php?uname='.$uname.'";</script>';
+
+	}
+
+	elseif ($u_id == 3)
+	{
+		$result_check = "SELECT pat.email, acc.username FROM patient_tbl pat INNER JOIN accounts_tbl acc ON pat.account_id = acc.account_id WHERE acc.username = '$user_name'";
+		$exe_check = mysqli_query($conn, $result_check);
+		$res = mysqli_fetch_assoc($exe_check);
+
+		$uname = $res['username'];
+
+		echo  '<script> window.location.href="Success.php?uname='.$uname.'";</script>';
+
+	}
+
+
+	else{
+		$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
+	}
+
 	 }
+
+
+
+
+	
+	//  $result_check = "SELECT doc.email FROM doctor_tbl doc INNER JOIN accounts_tbl acc ON doc.account_id = acc.account_id WHERE acc.username = '$check'";
+	// 	$exe_check = mysqli_query($conn, $result_check);
+	// 	$res = mysqli_fetch_assoc($exe_check);
+
+	// 	$email = $res['email'];
+
+
+	//  $cur_username = $result['username'];
+
+
+	// if ($u_id == 1) {
+	// 	$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
+	// }
+	//  if ($cur_username == $user_name) {
+	//  		 header('location: Success.php?uname='.$cur_username.'');	
+	//  }
+	//  else{
+	//  	$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
+	//  }
+
+	//  }
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +113,7 @@
 
 
 			  	<label class="text-center"><b>Username:</b></label>
-			    <input type="text" name="u_name" class="form-control w-50">
+			    <input type="text" name="u_name" class="form-control w-50" required="">
 
 			    <a href="new_Login.php" class="btn btn-default" style="margin-top: 10px;">Close</a>
 			    <button type="submit" class="btn btn-primary" name="forgot" style="margin-top: 10px;">Submit</button>

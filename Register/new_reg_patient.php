@@ -17,21 +17,47 @@ $ContactNo=$_POST['phonenum'];
 $email = $_POST['Email'];
 
 
-$insert_pat = "INSERT INTO patient_tbl (firstname,lastname,middlename,gender,houseNo,barangay,municipality,province,contactno,email)
-  VALUES('$lastname','$firstname','$middlename','$gender','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$email')";
 
-  $run_insert_pat = mysqli_query($conn,$insert_pat);
+  $checking = "SELECT count(email) as email FROM patient_tbl WHERE email = '$email'";
+  $exe_checking = mysqli_query($conn, $checking);
+  $res_checking = mysqli_fetch_assoc($exe_checking);
 
-  if($run_insert_pat == true){
+   if($res_checking['email'] > 0){
 
-  header('location: Reg_Success.php');
+    $errors = "<p style='text-align: center; padding: -20px;'> <b>email has already exist bonak</b> </p>";
+  }
+  else
+  {
+    $insert_pat = "INSERT INTO patient_tbl (firstname,lastname,middlename,gender,houseNo,barangay,municipality,province,contactno,email)
+    VALUES('$lastname','$firstname','$middlename','$gender','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$email')";
+
+    $run_insert_pat = mysqli_query($conn,$insert_pat);
+
+    header('location: Reg_Success.php');
+  }
 
 }
-else{
-  echo"Try Again";
-}
 
-}  
+
+
+
+// $insert_pat = "INSERT INTO patient_tbl (firstname,lastname,middlename,gender,houseNo,barangay,municipality,province,contactno,email)
+//   VALUES('$lastname','$firstname','$middlename','$gender','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$email')";
+
+//   $run_insert_pat = mysqli_query($conn,$insert_pat);
+
+
+//   if($run_insert_pat == true){
+
+
+//   header('location: Reg_Success.php');
+
+// }
+// else{
+//   echo"Try Again";
+// }
+
+// }  
              
 ?>
 
@@ -101,7 +127,7 @@ h6 {margin-left: 1%;}
 <body style="background-color: #ebebd9;">
  <div class="header55 align-items-center"><b>Patient Registration</b></div>
      <div class="panel panel-default" style="margin-top: 40px;">
-              <div class="panel-heading">Doctor Findings</div>
+              <div class="panel-heading">Patient</div>
               <div class="panel-body">
 
 <form class="Reg" method="post" style="margin-top:100px;">
@@ -113,6 +139,12 @@ h6 {margin-left: 1%;}
       <h3>Patient Information</h3>
      </div>
 
+
+                                              <?php if(isset($errors)) { ?>
+                                              <div class="alert alert-danger w-50" role="alert">
+                                                  <?php echo $errors; ?>
+                                              </div>
+                                              <?php } ?>
 
     <div class="form-group col-md-4">
     <label for="inputEmail4"> Firstname</label>   <i class="fas fa-user"> </i>
@@ -169,7 +201,7 @@ h6 {margin-left: 1%;}
     </div>
     <div class="form-group col-md-5">
       <label for="inputCity">Email</label> <i class="fas fa-mail-bulk"></i>
-      <input type="text"  name="Email" class="form-control" id="inputCity" placeholder="juandelacruz@gmail.com" required="">
+      <input type="email"  name="Email" class="form-control" id="inputCity" placeholder="juandelacruz@gmail.com" required="">
     </div>
  
   </div>

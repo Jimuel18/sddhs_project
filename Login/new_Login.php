@@ -19,7 +19,7 @@ if(isset($_POST['Login_Button'])){
                  $user_type = $exe['usertype_id'];
                 
                if($user_type == 1){
-                     $sql_ad = "SELECT * FROM admin_tbl WHERE account_id = '$exe[account_id]'";
+                    $sql_ad = "SELECT * FROM admin_tbl WHERE account_id = '$exe[account_id]'";
                     $result_ad = mysqli_query($conn, $sql_ad);
                     $exe_ad=mysqli_fetch_assoc($result_ad);
 
@@ -29,7 +29,7 @@ if(isset($_POST['Login_Button'])){
 
                }
                elseif ($user_type == 2) {
-                     $sql_doc = "SELECT * FROM doctor_tbl WHERE account_id = '$exe[account_id]'";
+                    $sql_doc = "SELECT * FROM doctor_tbl WHERE account_id = '$exe[account_id]'";
                     $result_doc = mysqli_query($conn, $sql_doc);
                     $exe_doc=mysqli_fetch_assoc($result_doc);
 
@@ -81,7 +81,7 @@ if(isset($_POST['Login_Button'])){
       <div class="front">
         <!--<img src="images/frontImg.jpg" alt="">-->
         <div class="text">
-          <span class="text-1">Malasakit at <br> Serbisyong Matapat</span>
+          <span class="text-1">Malasakit at<br> Serbisyong Matapat</span>
           <span class="text-2">Sto. Domingo District Hospital</span>
         </div>
       </div>

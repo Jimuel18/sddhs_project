@@ -4,8 +4,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$sname= "localhost";
-$uname= "root";
+$sname = "localhost";
+$uname = "root";
 $password = "";
 $db_name = "sddhs_db";
 

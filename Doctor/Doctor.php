@@ -279,31 +279,31 @@ else{
 
 
   <body>
-    <div class="container-fluid chart" style="border: dashed 0.5px; border-radius: 50px; margin-top: 20px;">
+    <div class="container-fluid chart" style="margin-top: 20px;">
       <div class="row">
         <div class="tree">
           <h4><b>ORGANIZATIONAL CHART</b></h4>
           <ul>
-            <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor 1</span></a>
+            <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #1</span></a>
             <ul>
-              <li><a><img src="../Pics/181917427_378907500001577_4937339095736241973_n.jpg"><span>Doctor 2</span></a>
+              <li><a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #2</span></a>
               <ul>
-                <li> <a><img src="../Pics/2021-calendar-page-blue-background-business-planning-appointment-meeting-concept_293060-4073.jpg"><span>Great Grand Child</span></a> </li>
-                <li> <a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Great Grand Child</span></a> </li>
+                <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #3</span></a> </li>
+                <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #4</span></a> </li>
               </ul>
             </li>
-            <li> <a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Grand Child</span></a>
+            <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #5</span></a>
             <ul>
-              <li> <a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Great Grand Child</span></a> </li>
-              <li> <a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Great Grand Child</span></a> </li>
-              <li> <a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Great Grand Child</span></a> </li>
-               <li> <a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Great Grand Child</span></a> </li>
+              <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #6</span></a> </li>
+              <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #7</span></a> </li>
+              <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #8</span></a> </li>
+               <li> <a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #9</span></a> </li>
             </ul>
           </li>
-  <li><a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Grand Child</span></a></li>
+  <li><a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #10</span></a></li>
         </ul>
       </li>
-         <li><a><img src="../Pics/67881575_108722483820362_4764055841588379648_n.jpg"><span>Grand Child</span></a></li>
+         <li><a><img src="../Pics/127-1272273_doctors-logo-black-and-white-vector-png-download.png"><span>Doctor #11</span></a></li>
     </ul>
 
   </div>

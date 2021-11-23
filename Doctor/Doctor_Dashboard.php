@@ -163,22 +163,7 @@ if (isset($_POST['view'])) {
   </tr>
 </thead>
    <tbody>
-     <?php 
-    
-    if($result_sched->fetch_assoc()==0)
-    {
-    ?>
-    <tr>
-      <td>
-         <td colspan="7" style="text-align: center; border: solid; padding: 8px; background-color: grey;"><b>Empty!</b></td>
-      </td>
-
-    </tr>
-
     <?php
-    }
-
-
     while ($row1=$result_sched->fetch_assoc()) { ?>
       <tr>
         <th scope="row"><?= $row1['firstname'].' '.$row1['lastname']; ?></th>
@@ -194,7 +179,7 @@ if (isset($_POST['view'])) {
               { 
               ?>
 
-               <a href="Doctor_Findings.php?id=<?= $row1['patient_id']?>&schedule_id=<?php echo $row1['schedule_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><i class="fas fa-file-export"></i><b> Edit </b></a>
+               <a href="Update_Diagnosis.php?id=<?= $row1['patient_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><b> Edit <i class="fas fa-edit"></i></b></a>
 
               <?php
                   
@@ -202,7 +187,7 @@ if (isset($_POST['view'])) {
               elseif($row1['Completed'] == "Pending"){
               ?>
 
-               <a href="Doctor_Findings.php?id=<?= $row1['patient_id']?>&schedule_id=<?php echo $row1['schedule_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><i class="fas fa-file-export"></i><b> Post Diagnosis </b></a>
+               <a href="Doctor_Findings.php?id=<?= $row1['patient_id']?>&schedule_id=<?php echo $row1['schedule_id']?>" type="submit" class="btn btn-success" style=" margin-right: 10px; width: 150px; display: inline-block;"><b> Post Diagnosis <i class="fas fa-file-export"></i> </b></a>
 
               <?php
 
@@ -210,7 +195,7 @@ if (isset($_POST['view'])) {
               ?>
            <form method="post" style="display: inline-block;">
             <input type="hidden" name="view_id" value="<?= $row1['patient_id']?>">
-          <button type="submit" name="view" class="btn btn-warning"><i class="fas fa-eye"></i><b>View Record</b></button>
+          <button type="submit" name="view" class="btn btn-warning"><b>View Record <i class="fas fa-eye"></i></b></button>
           </form>
 
         </td>

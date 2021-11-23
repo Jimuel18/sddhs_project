@@ -275,6 +275,8 @@ button.ex{
 
         $upt_info = "UPDATE `patient_tbl` SET `firstname`='$fname1',`lastname`='$lname1', `contactno`='$con1' WHERE patient_id = '$_SESSION[patient_id]'";
         mysqli_query($conn,$upt_info);
+
+        echo  '<script> window.location.href="patientProfile.php";</script>';
        
 
       }

@@ -32,15 +32,17 @@
     $ynum = "";
     $color = "";
 
+    if (mysqli_num_rows($app_year_exe)) {
+    
     do{
-
       $xnum .= ''.$year['year'].',';
       $ynum .= ''.$year['total'].',';
       $color .= '"#'.substr(str_shuffle("123456789ABCDEF"), 0, 6).'",';
- 
     }
-    while ($year = mysqli_fetch_assoc($app_year_exe));
 
+    
+    while ($year = mysqli_fetch_assoc($app_year_exe));
+}
     $col = "[".$color."]";
     $xres = "[".$xnum."]";
     $yres = "[".$ynum."]";

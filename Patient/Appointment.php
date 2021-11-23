@@ -90,9 +90,8 @@ $show = $_GET['show'];
 
 if($show == 1){
       $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Sunday' ORDER BY sd.start_time";
-      $stmt_sched=$conn->prepare($query_sched);
-      $stmt_sched->execute();
-      $result_sched=$stmt_sched->get_result();
+      $stmt = mysqli_query($conn, $query_sched);
+      $result_sched = mysqli_fetch_assoc($stmt);
 
         date_default_timezone_set('Asia/Manila');
       $Date = date('Y-m-d', strtotime("Sunday this week") );
@@ -100,54 +99,51 @@ if($show == 1){
 }
 elseif ($show == 2) {
       $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Monday' ORDER BY sd.start_time";
-      $stmt_sched=$conn->prepare($query_sched);
-      $stmt_sched->execute();
-      $result_sched=$stmt_sched->get_result();
+      $stmt = mysqli_query($conn, $query_sched);
+      $result_sched = mysqli_fetch_assoc($stmt);
+      // $stmt_sched=$conn->prepare($query_sched);
+      // $stmt_sched->execute();
+      // $result_sched=$stmt_sched->get_result();
 
         date_default_timezone_set('Asia/Manila');
       $Date = date('Y-m-d', strtotime("monday this week") );
 }
 elseif ($show == 3) {
    $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Tuesday' ORDER BY sd.start_time";
-      $stmt_sched=$conn->prepare($query_sched);
-      $stmt_sched->execute();
-      $result_sched=$stmt_sched->get_result();
+      $stmt = mysqli_query($conn, $query_sched);
+      $result_sched = mysqli_fetch_assoc($stmt);
 
         date_default_timezone_set('Asia/Manila');
       $Date = date('Y-m-d', strtotime("tuesday this week") );
 }
 elseif ($show == 4) {
    $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Wednesday' ORDER BY sd.start_time";
-      $stmt_sched=$conn->prepare($query_sched);
-      $stmt_sched->execute();
-      $result_sched=$stmt_sched->get_result();
+     $stmt = mysqli_query($conn, $query_sched);
+      $result_sched = mysqli_fetch_assoc($stmt);
 
         date_default_timezone_set('Asia/Manila');
       $Date = date('Y-m-d', strtotime("Wednesday this week") );
 }
 elseif ($show == 5) {
-   $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Thursday' ORDER BY sd.start_time";
-      $stmt_sched=$conn->prepare($query_sched);
-      $stmt_sched->execute();
-      $result_sched=$stmt_sched->get_result();
+     $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Thursday' ORDER BY sd.start_time";
+     $stmt = mysqli_query($conn, $query_sched);
+      $result_sched = mysqli_fetch_assoc($stmt);
 
         date_default_timezone_set('Asia/Manila');
       $Date = date('Y-m-d', strtotime("thursday this week") );
 }
 elseif ($show == 6) {
-   $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Friday' ORDER BY sd.start_time";
-    $stmt_sched=$conn->prepare($query_sched);
-      $stmt_sched->execute();
-      $result_sched=$stmt_sched->get_result();
+      $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Friday' ORDER BY sd.start_time";
+    $stmt = mysqli_query($conn, $query_sched);
+      $result_sched = mysqli_fetch_assoc($stmt);
 
         date_default_timezone_set('Asia/Manila');
       $Date = date('Y-m-d', strtotime("friday this week") );
    }
 elseif ($show == 7){
      $query_sched="SELECT dt.firstname, dt.lastname, sd.day, sd.start_time, sd.end_time, sd.status, sd.schedule_id FROM doctor_tbl dt INNER JOIN schedule_tbl sd ON dt.Doctor_id = sd.Doctor_id WHERE dt.Doctor_id = '$doctorid' AND sd.day = 'Saturday' ORDER BY sd.start_time";
-      $stmt_sched=$conn->prepare($query_sched);
-      $stmt_sched->execute();
-      $result_sched=$stmt_sched->get_result();
+     $stmt = mysqli_query($conn, $query_sched);
+      $result_sched = mysqli_fetch_assoc($stmt);
 
 
       date_default_timezone_set('Asia/Manila');
@@ -212,7 +208,7 @@ $time = date("h:i A");
   </tr>
    <tbody>
        <?php
-       if ($result_sched->fetch_assoc()==0) {
+       if(mysqli_num_rows($stmt) == 0) {
            ?>
            <tr>
             <td colspan="5" style="text-align:center; border: solid; padding: 10px; background-color: grey;"><b>This Doctor Doesn't Have a Available Schedule this day Yet. Check it later Thank You!</b></td>
@@ -221,17 +217,17 @@ $time = date("h:i A");
 
        }
        else{
-            while ($row=$result_sched->fetch_assoc()) { ?>
+            do { ?>
               <tr>
-                <td scope="row"><?= $row['firstname'].' '.$row['lastname'];?></td>
-              <td scope="row"><?= $row['day']; ?></td>
-               <td scope="row"><?= date('h:i A', strtotime($row['start_time'])); ?></td>
-              <td scope="row"><?= date('h:i A', strtotime($row['end_time'])); ?></td>
+              <td scope="row"><?= $result_sched['firstname'].' '.$result_sched['lastname'];?></td>
+              <td scope="row"><?= $result_sched['day']; ?></td>
+               <td scope="row"><?= date('h:i A', strtotime($result_sched['start_time'])); ?></td>
+              <td scope="row"><?= date('h:i A', strtotime($result_sched['end_time'])); ?></td>
               <td>
     <?php
             $today = date("Y-m-d");
             $time = ltrim(date("H:i:s"), 0);
-            $sched = ltrim($row['start_time'], 0);
+            $sched = ltrim($result_sched['start_time'], 0);
 
 
             $sched_date = explode("-", $Date);
@@ -240,7 +236,7 @@ $time = date("h:i A");
             $sched_time = explode(":", $sched);
             $time_now = explode(":", $time);
 
- if($row['status'] == "Not_Available"){
+ if($result_sched['status'] == "Not_Available"){
     echo "<label class='disabled' style='color: red;'>Not Available <i class='fas fa-ban'></i></label>";
  }
  else{
@@ -269,7 +265,7 @@ $time = date("h:i A");
                         }else if($sched_time[0] > $time_now[0]){
 
                             ?>
-                            <a href='test_invoice.php?id=<?php echo $doctorid?>&schedule_id=<?php echo $row['schedule_id']?>&date=<?php echo $Date?>' style='color: green; background-color: white;'> Available <i class='fas fa-check-square'></a></i> <?php
+                            <a href='test_invoice.php?id=<?php echo $doctorid?>&schedule_id=<?php echo $result_sched['schedule_id']?>&date=<?php echo $Date?>' style='color: green; background-color: white;'> Available <i class='fas fa-check-square'></a></i> <?php
 
                         }else if($sched_time[0] == $time_now[0]){
                             
@@ -280,14 +276,14 @@ $time = date("h:i A");
                             }else if($sched_time[1] > $time_now[1]){
 
                                 ?>
-                               <a href='test_invoice.php?id=<?php echo $doctorid?>&schedule_id=<?php echo $row['schedule_id']?>&date=<?php echo $Date?>' style='color: green; background-color: white;'> Available <i class='fas fa-check-square'></a></i><?php
+                               <a href='test_invoice.php?id=<?php echo $doctorid?>&schedule_id=<?php echo $result_sched['schedule_id']?>&date=<?php echo $Date?>' style='color: green; background-color: white;'> Available <i class='fas fa-check-square'></a></i><?php
                             
                             }
                         }
 
                     }else{
                         ?>
-                               <a href='test_invoice.php?id=<?php echo $doctorid?>&schedule_id=<?php echo $row['schedule_id']?>&date=<?php echo $Date?>' style='color: green; background-color: white;'> Available <i class='fas fa-check-square'></a></i><?php
+                               <a href='test_invoice.php?id=<?php echo $doctorid?>&schedule_id=<?php echo $result_sched['schedule_id']?>&date=<?php echo $Date?>' style='color: green; background-color: white;'> Available <i class='fas fa-check-square'></a></i><?php
                     }
                 }
 
@@ -298,7 +294,7 @@ $time = date("h:i A");
         </td>
 
       </tr>     
- <?php } 
+ <?php } while ($result_sched = mysqli_fetch_assoc($stmt));
 
 } ?>  
 

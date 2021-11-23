@@ -60,6 +60,8 @@
 
                      $status = "success";
                      $response = "Email is sent!";
+
+                     echo  '<script> window.location.href="Send_Email.php";</script>';
              }
              else
              {
