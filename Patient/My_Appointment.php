@@ -189,7 +189,6 @@ div.header00 {margin-left: 65px; width: 280px; height: 120px; margin-top: 30px; 
           <td><?= date('h:i A', strtotime($row['start_time'])); ?></td>
           <td><?= date('h:i A', strtotime($row['end_time'])); ?></td>
           <td><?= $row['Completed']?></td>    
-
         <td>
           <form method="post" class="row-4">
           <input type="hidden" name="app" value="<?= $row['appointment_id'].'|'.$row['schedule_id']?>">
@@ -197,67 +196,19 @@ div.header00 {margin-left: 65px; width: 280px; height: 120px; margin-top: 30px; 
           <a href="View_Appointment.php?id=<?php echo $row['appointment_id']; ?>" type="submit" class="btn btn-success butche" name="view_app"> <i class="far fa-eye"></i> <b>View</b>  </a>
 
            <?php if($row['Completed'] == "Pending") { ?>
-          <button onclick="return confirm('Are you sure you want to Cancel your Appointment?');"  type="submit" name="cancel_app" class="btn btn-danger butche" > <i class="far fa-window-close"></i> <b>Cancel</b> </button>
+          <button onclick="return confirm('Are you sure you want to Cancel your Appointment?');"  type="submit" name="cancel_app" class="btn btn-danger butche" > <i class="far fa-window-close"></i> <b>Cancel</b></button>
         <?php }?>
           </form>
-      
       </tr>     
  <?php } ?>  
     </tbody>
   </table>
 
-<!-- The Modal -->
-  <div class="modal fade" id="myApp">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Patient Record <?php echo $view; ?></h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-         <table class="table table-striped">
-          <thead>
-            <tr>
-    <th>Appointment_ID </th>
-    <th>Schedule_ID </th>
-    <th>Date </th>
-    <th>Your Complain </th>
-  
-            </tr>
-          </thead>
-
-     <tbody class="table">
-         <?php while($row2=$result_diag->fetch_assoc()){?>
-          <tr>
-        <th scope="row"><?= $row2['appointment_id']; ?></th>
-        <td><?= $row2['schedule_id']; ?></td>
-        <td><?= $row2['Date']; ?></td>
-        <td><?= $row2['Complain']; ?></td>
-              </tr>
-          </tbody>
-        <?php }?>
-      </table>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-
 </div>
 </div>
 
-</div>
-</div>
+<h5 style="text-align: center; color: red; font-size: 15px;"><b>Note:</b> Cancel your appointment if you can't go to the schedule that you booked!</h5>
+
 </body>
 </html>
 

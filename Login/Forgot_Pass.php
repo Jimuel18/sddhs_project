@@ -10,44 +10,43 @@
 	 $exe_forgot = mysqli_query($conn, $forgot);
 	 $result = mysqli_fetch_assoc($exe_forgot);
 
-	 $u_id = $result['usertype_id'];
+	 		if(mysqli_num_rows($exe_forgot)){
 
-	 if ($u_id == 1) {
-	 		$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
-	 }
+	 				 $u_id = $result['usertype_id'];
 
-	 elseif ($u_id == 2)
-	{
-		$result_check = "SELECT doc.email, acc.username FROM doctor_tbl doc INNER JOIN accounts_tbl acc ON doc.account_id = acc.account_id WHERE acc.username = '$user_name'";
-		$exe_check = mysqli_query($conn, $result_check);
-		$res = mysqli_fetch_assoc($exe_check);
+					 if ($u_id == 1) {
+					 		$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
+					 }
 
-		$uname = $res['username'];
+					 elseif ($u_id == 2)
+					{
+						$result_check = "SELECT doc.email, acc.username FROM doctor_tbl doc INNER JOIN accounts_tbl acc ON doc.account_id = acc.account_id WHERE acc.username = '$user_name'";
+						$exe_check = mysqli_query($conn, $result_check);
+						$res = mysqli_fetch_assoc($exe_check);
 
-		echo  '<script> window.location.href="Success.php?uname='.$uname.'";</script>';
+						$uname = $res['username'];
 
-	}
+						echo  '<script> window.location.href="Success.php?uname='.$uname.'";</script>';
 
-	elseif ($u_id == 3)
-	{
-		$result_check = "SELECT pat.email, acc.username FROM patient_tbl pat INNER JOIN accounts_tbl acc ON pat.account_id = acc.account_id WHERE acc.username = '$user_name'";
-		$exe_check = mysqli_query($conn, $result_check);
-		$res = mysqli_fetch_assoc($exe_check);
+					}
 
-		$uname = $res['username'];
+					elseif ($u_id == 3)
+					{
+						$result_check = "SELECT pat.email, acc.username FROM patient_tbl pat INNER JOIN accounts_tbl acc ON pat.account_id = acc.account_id WHERE acc.username = '$user_name'";
+						$exe_check = mysqli_query($conn, $result_check);
+						$res = mysqli_fetch_assoc($exe_check);
 
-		echo  '<script> window.location.href="Success.php?uname='.$uname.'";</script>';
+						$uname = $res['username'];
 
-	}
+						echo  '<script> window.location.href="Success.php?uname='.$uname.'";</script>';
 
+					}
 
-	else{
-		$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
-	}
+	 		}else{
+	 				$error = "<p style='text-align: center; padding: -20px;'> <b>Username</b> not found! Please Try Again.</p>";
+	 		}
 
-	 }
-
-
+}
 
 
 	
@@ -95,7 +94,7 @@
 		<div class="my_content">
 			<div class="card w-50" style="margin: auto;">
 			  <div class="card-header">
-			    <b>Find Your Account</b>
+			    <b>ACCOUNT RECOVERY</b>
 			  </div>
 
 			  	<center>

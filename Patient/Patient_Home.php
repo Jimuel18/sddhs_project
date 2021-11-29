@@ -137,7 +137,7 @@ h1{
 </div>
 
  <h1 style="text-align: center;">ACTIVITIES</h1> 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel"  style=" width:100%; height: 650px !important; display: block;">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -155,27 +155,27 @@ h1{
     <div class="container" style="margin: auto; width: 100%;">
     <div class="carousel-inner">
       <div class="item active">
-        <img src="../Pics/hospital.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic1.jpg" style="margin: auto;"  style="height: 130px;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
     
       <div class="item">
-        <img src="../Pics/pic2.jpg" style="margin: auto;"  style="height: 130px;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic3.jpg" style="margin: auto;"  style="height: 130px;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic4.jpg" style="margin: auto;"  style="height: 130px;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic5.jpg" style="margin: auto;"  style="height: 130px;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
 

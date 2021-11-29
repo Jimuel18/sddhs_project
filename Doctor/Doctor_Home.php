@@ -104,27 +104,27 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
     <div class="container" style="margin: auto; width: 100%; min-height: 50%;">
     <div class="carousel-inner">
       <div class="item active">
-        <img src="../Pics/hospital.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic1.jpg" style="width:50%; min-height: 50%; margin: auto;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
     
       <div class="item">
-        <img src="../Pics/pic2.jpg" style="width:50%; min-height: 50%; margin: auto;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic3.jpg" style="width:50%; height: 100%; margin: auto;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic4.jpg" style="width:50%; height: 100%; margin: auto;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
       <div class="item">
-        <img src="../Pics/pic5.jpg" style="width:50%; height: 50%; margin: auto;">
+        <img src="../Pics/Sample.jpg" style="margin: auto;">
       </div>
 
 

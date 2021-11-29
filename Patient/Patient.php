@@ -34,8 +34,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-    <script src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.2.0/css/fixedHeader.bootstrap4.min.css"></script>
+<script  src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"> </script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js">  </script>
 
 </head>
 <style type="text/css">
@@ -57,6 +58,20 @@
   margin-top: 20px;
   
  } 
+
+ .dataTables_filter {
+   width: 50%;
+   float: right;
+   text-align: left;
+   margin-right: -10px;
+
+}
+
+div.dataTables_length label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+
+}
 
  table, thead, tr, th {
   text-align: center;
@@ -124,7 +139,7 @@ if (isset($_SESSION['response'])) { ?>
 
   <div style="overflow-x: auto; width: 100%; height: 100%;">
 
-  <table class="table table-striped table-bordered nowrap">
+  <table class="table table-striped table-bordered nowrap" id="example" style="overflow-x: auto;">
     <thead class="thead-dark">
       <tr>
         <th scope="row">Patient_ID</th>
@@ -138,7 +153,6 @@ if (isset($_SESSION['response'])) { ?>
         <th>Province</th>
         <th>Contact Number</th>
         <th>Email</th>
-        <th>Account_ID</th>
         <th>Action</th>
     
       </tr>
@@ -159,7 +173,6 @@ if (isset($_SESSION['response'])) { ?>
          <td><?= $row1['province']; ?></td>
           <td><?= $row1['contactno']; ?></td>
           <td><?= $row1['email']; ?></td>
-          <td><?= $row1['account_id']; ?></td>
         <td>  
           <button class="btn btn-success " data-toggle="modal" type="button" data-target="#updateModalCenter<?= $row1['patient_id']?>"> Update <i class="fas fa-edit"></i></button>
    
@@ -342,3 +355,12 @@ if (isset($_SESSION['response'])) { ?>
     </div>
   </div>
 </div>
+
+<script>
+ $('#example').dataTable( {
+    "oLanguage": {
+      "sLengthMenu": "Show Entries_MENU_",
+    }
+});
+
+</script>

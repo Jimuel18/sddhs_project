@@ -68,7 +68,6 @@ include('../Sidebar_Header_Test/Sidebar_Doctor.php');
 
 /*Profile*/
 .wrapper{
-
   margin: auto;
   height: 500px; 
   width: 1000px;

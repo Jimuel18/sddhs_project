@@ -13,7 +13,7 @@
 
 	if ($u_type == 2)
 	{
-		$result_check = "SELECT doc.email FROM doctor_tbl doc INNER JOIN accounts_tbl acc ON doc.account_id = acc.account_id WHERE acc.username = '$check'";
+		$result_check = "SELECT doc.email, acc.account_id FROM doctor_tbl doc INNER JOIN accounts_tbl acc ON doc.account_id = acc.account_id WHERE acc.username = '$check'";
 		$exe_check = mysqli_query($conn, $result_check);
 		$res = mysqli_fetch_assoc($exe_check);
 
@@ -21,7 +21,7 @@
 	}
 	elseif($u_type == 3)
 	{
-		$result_check = "SELECT pat.email FROM patient_tbl pat INNER JOIN accounts_tbl acc ON pat.account_id = acc.account_id WHERE acc.username = '$check'";
+		$result_check = "SELECT pat.email, acc.account_id FROM patient_tbl pat INNER JOIN accounts_tbl acc ON pat.account_id = acc.account_id WHERE acc.username = '$check'";
 		$exe_check = mysqli_query($conn, $result_check);
 		$res = mysqli_fetch_assoc($exe_check);
 
@@ -75,9 +75,10 @@
 
   		header('location: Email_Send.php');		
 
-    }
+    }else{
+	$error = "<p style='text-align: center; padding: -20px;'> <b>Email</b> not Match! Please Try Again.</p>";
 }
-
+}
 
 ?>
 
@@ -111,6 +112,12 @@
 				<div class="form-group">
 
 			  	<p>We've Found your username. To continue recovering please complete this email below.</p>
+
+			  								 <?php if(isset($error)) { ?>
+                                              <div class="alert alert-danger w-50" role="alert">
+                                                  <?php echo $error; ?>
+                                              </div>
+                                              <?php } ?>
 
 			  	<label class="text-center"><b>Your Email: <?php echo $the_email; ?> </b></label>
 			    <input type="text" name="email_recover" class="form-control w-50">

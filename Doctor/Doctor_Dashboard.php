@@ -221,7 +221,7 @@ if (isset($_POST['view'])) {
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Patient Record <?php echo $view; ?></h4>
+          <h4 class="modal-title">Patient Record</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         

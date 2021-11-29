@@ -93,7 +93,7 @@ if(isset($_POST['Login_Button'])){
     <div class="forms">
         <div class="form-content">
           <div class="login-form">
-            <div class="title">S.D.D.H.S Login</div>
+            <div class="title"><b>S.D.D.H.S Login</b></div>
 
             <!-- Login  -->
 
@@ -124,12 +124,7 @@ if(isset($_POST['Login_Button'])){
               <div class="text sign-up-text">Don't have an account? <label><a href="../Register/new_reg_patient.php" name="SignUp">Sigup now</label></a></div>
               </div>
         </form>
-
-        <!-- End -->
-
-
-      </div>
-        
+      </div>     
     </div>
     </div>
   </div>

@@ -28,8 +28,8 @@ $email = $_POST['Email'];
   }
   else
   {
-    $insert_pat = "INSERT INTO patient_tbl (firstname,lastname,middlename,gender,houseNo,barangay,municipality,province,contactno,email)
-    VALUES('$lastname','$firstname','$middlename','$gender','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$email')";
+    $insert_pat = "INSERT INTO patient_tbl (firstname,lastname,middlename,gender,houseNo,barangay,municipality,province,contactno,email,account_id)
+    VALUES('$lastname','$firstname','$middlename','$gender','$HouseNo','$Barangay','$Municipality','$Province','$ContactNo','$email',null)";
 
     $run_insert_pat = mysqli_query($conn,$insert_pat);
 
@@ -125,9 +125,9 @@ h6 {margin-left: 1%;}
 }
 </style>
 <body style="background-color: #ebebd9;">
- <div class="header55 align-items-center"><b>Patient Registration</b></div>
+ <div class="header55 align-items-center"><b>Registration</b></div>
      <div class="panel panel-default" style="margin-top: 40px;">
-              <div class="panel-heading">Patient</div>
+              <div class="panel-heading">For Patient</div>
               <div class="panel-body">
 
 <form class="Reg" method="post" style="margin-top:100px;">
@@ -136,7 +136,7 @@ h6 {margin-left: 1%;}
 
 
      <div class="form-group col-md-12">
-      <h3>Patient Information</h3>
+      <h3>Information</h3>
      </div>
 
 
@@ -212,12 +212,16 @@ h6 {margin-left: 1%;}
       <label class="form-check-label" for="gridCheck">
       <h6 style="font-style: italic; color:red;"> Note: Please use a valid email address! The system will send your username and password through email address! Thankyou</h6>
       <input class="form-check-input" type="checkbox" id="gridCheck" required="">
-      Did you use valid Email? Check this out!
-
+      Did you use valid Email? Check this out! 
+      <br> 
+      <br>
+      <button type="submit" name="Submit-Patient" class="btn btn-primary" style="width: 30%;"> <i class="far fa-registered"></i> Register </button>  
+      <hr>   
+      <a href="../Login/new_Login.php" style="margin: auto; text-align: center; text-decoration: none;">Already have an account?</a>
       </label>
     </div>
- <a href="../Login/new_Login.php" class="btn btn-warning" style="margin-top: 30px; float: right; margin-left: 5px;" > <i class="fas fa-window-close"></i> Close</a>
-  <button type="submit" name="Submit-Patient" class="btn btn-primary" style="margin-top: 30px;float: right;" > <i class="far fa-registered"></i> Register </button> 
+
+
   
 </form>
 

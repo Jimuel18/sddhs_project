@@ -40,7 +40,7 @@
         $mail->setFrom("stodomingodistricthospital@gmail.com", "S.D.D.H.S");
         $mail->addAddress($email);
         $mail->Subject = ("StoDomingo District Hospital");
-        $mail->Body = "<h1>S.D.D.H.S E-Medic</h1></br><h5>Hey this is your login information.</h5></br> <b>username: $username </br>password: $password </b>";
+        $mail->Body = "<h1>S.D.D.H.S E-Medic</h1></br><h5>Hey this is your login information.</h5></br> <b>Username:</b> $username </br> <b>Password:</b> $password";
 
             if($mail->send()){
 
@@ -61,7 +61,7 @@
                      $status = "success";
                      $response = "Email is sent!";
 
-                     echo  '<script> window.location.href="Send_Email.php";</script>';
+                     echo '<script> window.location.href="Send_Email.php";</script>';
              }
              else
              {
@@ -231,7 +231,7 @@ table, thead, tr, th {
 
  <div class="col-md-9" style="margin-top: 50px; margin-left: 50px;">
       <?php 
-      $query1="SELECT * FROM patient_tbl WHERE account_id = 0";
+      $query1="SELECT * FROM patient_tbl WHERE account_id is NULL";
       $stmt1=$conn->prepare($query1);
       $stmt1->execute();
       $result1=$stmt1->get_result();
